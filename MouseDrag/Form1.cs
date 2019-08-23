@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
@@ -14,10 +7,17 @@ namespace MouseDrag
     public partial class Form1 : Form
     {
         MouseDragDrop dragDrop = new MouseDragDrop();
+        const int resetValue = 4;
 
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void updateCurrentDrag()
+        {
+            dragHeightCurrent.Text = MouseDragDrop.CurrentDrag().Item1;
+            dragWidthCurrent.Text = MouseDragDrop.CurrentDrag().Item2;
         }
 
         private void updateButton_Click(object sender, EventArgs e)
@@ -25,8 +25,18 @@ namespace MouseDrag
             
             int selectedValue = (int)newDragNum.Value;
             dragDrop.SetDragValues(selectedValue);
-            dragHeightCurrent.Text = MouseDragDrop.CurrentDrag().Item1;
-            dragWidthCurrent.Text = MouseDragDrop.CurrentDrag().Item2;
+            updateCurrentDrag();
+        }
+
+        private void resetButton_Click(object sender, EventArgs e)
+        {
+            dragDrop.SetDragValues(resetValue);
+            updateCurrentDrag();
+        }
+
+        private void closeButton_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
