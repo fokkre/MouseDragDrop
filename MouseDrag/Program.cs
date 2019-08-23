@@ -4,13 +4,9 @@ using Microsoft.Win32;
 using System.Windows.Forms;
 
 
-//  This changes the amount of pixels it takes for a drag event/action to happen. Default for windows is 4 pixals.
-// Must logout/login to get it to take effect.
-// Registry Keys being modified are:
-//  HKEY_CURRENT_USER\Control Panel\Desktop\DragHeight
-//  HKEY_CURRENT_USER\Control Panel\Desktop\DragWidth
-// Written By Jacob Shelhamer
-// Date 8/22/2019
+//Ok Have to toot my own horn. My First true working program.
+//By Jacob Shelhamer
+//Date 8/22/2019
 
 
 namespace MouseDrag
