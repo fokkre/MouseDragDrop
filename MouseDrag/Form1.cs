@@ -7,6 +7,7 @@ namespace MouseDrag
     public partial class Form1 : Form
     {
         MouseDragDrop dragDrop = new MouseDragDrop();
+        //default windows 10 value for drag distance in pixals is 4
         const int resetValue = 4;
 
         public Form1()

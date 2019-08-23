@@ -4,6 +4,10 @@ using Microsoft.Win32;
 using System.Windows.Forms;
 
 
+//Ok Have to toot my own horn. My First true working program.
+//By Jacob Shelhamer
+//Date 8/22/2019
+
 
 namespace MouseDrag
 {
@@ -15,13 +19,14 @@ namespace MouseDrag
         const string path = "Control Panel\\Desktop";
         const string keyName = hkey + "\\" + path;
 
-        // Get and return current values
+        // Get and return current drag hieght and width values
         public static Tuple<string, string> CurrentDrag()
         {
-            
+            //these values are strings values, even though it is a number
             string currentHeight = (string)Registry.GetValue(keyName, "DragHeight", "Drag Height Not Found");
             string currentWidth = (string)Registry.GetValue(keyName, "DragWidth", "Drag Width Not Found");
 
+            //verify we can ready the registry and exit if not
             if (Convert.ToInt32(currentHeight) != Convert.ToInt32(currentWidth))
             {
                 string eCode = "ERROR: ";
@@ -31,11 +36,13 @@ namespace MouseDrag
             }
             else
             {
+                //return current values
                 var getData = new Tuple<string, string>(currentHeight, currentWidth);
                 return getData;
             }
         }
 
+        //set drag height and width to the same value. Maybe i'll add more functionality later to update each individually. Would be super easy.
         public void SetDragValues(int updateDrag)
         {
             Registry.SetValue(keyName, "DragHeight", updateDrag, RegistryValueKind.String);
@@ -49,6 +56,10 @@ namespace MouseDrag
             Application.Run(new Form1());
 
         }
+
+        //I can't believe this is what I started with and now it is something I am proud of.
+        
+        //static void Main()
         //{
 
         //    string currentHeight = (string)Registry.GetValue(keyName, "DragHeight", "Drag Height Not Found");
@@ -95,5 +106,5 @@ namespace MouseDrag
         //}
 
 
-    } 
+    }
 }
